@@ -3,9 +3,17 @@
 
 @theme {
   --color-header: #000;
+  --color-product: #d87d4a;
 }
 
 body {
   font-family: "Manrope", sans-serif;
   min-height: 100vh;
+}
+
+.new-product {
+  background-image: url(/public/assets/home/mobile/image-header.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 377px 522px;
 }
