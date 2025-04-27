@@ -4,6 +4,10 @@
 @theme {
   --color-header: #000;
   --color-product: #d87d4a;
+  --color-shopitems: #f1f1f1;
+  --color-speaker: #d87d4a;
+  --color-zx7: #f1f1f1;
+  --color-footer: #101010;
 }
 
 body {
@@ -16,4 +20,19 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 377px 522px;
+}
+
+.zx7 {
+  background: url(/public/assets/home/mobile/image-speaker-zx7.jpg)
+    lightgray 0px 0px / 100% 100% no-repeat;
+}
+
+.earphones-photo {
+  background: url(/public/assets/home/mobile/image-earphones-yx1.jpg)
+    lightgray 0px 0px / 100% 100% no-repeat;
+}
+
+.photo {
+  background: url(/public/assets/shared/mobile/image-best-gear.jpg)
+    lightgray 0px 0px / 100% 100% no-repeat;
 }
