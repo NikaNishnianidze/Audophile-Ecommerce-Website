@@ -4,10 +4,80 @@ import homeSpeaker from "../../public/assets/home/mobile/image-speaker-zx9.png";
 import homeEarphones from "../../public/assets/home/mobile/d47b304d532a222f08c1500c16aa3ed52c16aa20.png";
 import logo from "../../public/assets/audiophile 2.svg";
 import socials from "../../public/assets/Group 30.svg";
+import { useNavigate } from "react-router-dom";
+import { useEcommerce } from "../context/EcommerceProvider";
 
 export default function Home() {
+  const navigate = useNavigate();
+  const { menu, setMenu } = useEcommerce();
+
+  const handleSeeHeadphones = () => {
+    navigate("/headphones");
+  };
+
   return (
     <div className="flex flex-col items-center">
+      {menu && (
+        <>
+          <div
+            onClick={() => setMenu(false)}
+            className="fixed w-[375px] left-1/2 transform -translate-x-1/2 inset-0 top-0 bg-black/50 z-30"
+          ></div>
+          <div className="absolute top-[90px] left-1/2 transform -translate-x-1/2 left-0 w-[375px] bg-white z-40 p-6">
+            <div
+              onClick={handleSeeHeadphones}
+              className="headphones-box flex flex-col items-center w-[327px]  rounded-[8px] bg-shopitems mt-[75px] relative"
+            >
+              <img
+                src={homeHeadphones}
+                alt="home headphones"
+                className="w-[80px] h-[104px] absolute -top-11"
+              />
+              <p className="mt-[88px] text-[#000] text-[15px] font-bold">
+                HEADPHONES
+              </p>
+              <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
+                <p className="text-black/30 text-[13px] font-bold">
+                  SHOP
+                </p>
+                <img src={arrowRight} alt="arrow right" />
+              </div>
+            </div>
+            <div className="speakers-box w-[327px] rounded-[8px] bg-shopitems flex flex-col items-center relative mt-[68px]">
+              <img
+                src={homeSpeaker}
+                alt="home speakers"
+                className="w-[80px] h-[104px] absolute -top-11"
+              />
+              <p className="mt-[88px] text-[#000] text-[15px] font-bold">
+                SPEAKERS
+              </p>
+              <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
+                <p className="text-black/30 text-[13px] font-bold">
+                  SHOP
+                </p>
+                <img src={arrowRight} alt="arrow right" />
+              </div>
+            </div>
+            <div className="earphones-box w-[327px] rounded-[8px] bg-shopitems flex flex-col items-center relative mt-[68px]">
+              <img
+                src={homeEarphones}
+                alt="home headphones"
+                className="w-[147px] h-[133px] absolute -top-11"
+              />
+              <p className="mt-[88px] text-[#000] text-[15px] font-bold">
+                EARPHONES
+              </p>
+              <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
+                <p className="text-black/30 text-[13px] font-bold">
+                  SHOP
+                </p>
+                <img src={arrowRight} alt="arrow right" />
+              </div>
+            </div>
+          </div>
+        </>
+      )}
       <div className="new-product w-[375px] flex flex-col items-center">
         <p className="mt-[108px] leading-[10px] text-[14px] text-[#fff] font-normal">
           NEW PRODUCT
@@ -19,11 +89,17 @@ export default function Home() {
           Experience natural, lifelike audio and exceptional build
           quality made for the passionate music enthusiast.
         </p>
-        <button className="mt-[28px] mb-[90px] bg-product w-[160px] py-[15px] text-white text-[13px] font-bold uppercase">
+        <button
+          onClick={handleSeeHeadphones}
+          className="mt-[28px] mb-[90px] bg-product w-[160px] py-[15px] text-white text-[13px] font-bold uppercase"
+        >
           See Product
         </button>
       </div>
-      <div className="headphones-box flex flex-col items-center w-[327px]  rounded-[8px] bg-shopitems mt-[75px] relative">
+      <div
+        onClick={handleSeeHeadphones}
+        className="headphones-box flex flex-col items-center w-[327px]  rounded-[8px] bg-shopitems mt-[75px] relative"
+      >
         <img
           src={homeHeadphones}
           alt="home headphones"
@@ -127,7 +203,7 @@ export default function Home() {
         </div>
         <ul className="mt-[48px] flex flex-col items-center gap-[16px] text-[13px] text-white font-bold leading-[25px]">
           <li>HOME</li>
-          <li>HEADPHONES</li>
+          <li onClick={handleSeeHeadphones}>HEADPHONES</li>
           <li>SPEAKERS</li>
           <li>EARPHONES</li>
         </ul>

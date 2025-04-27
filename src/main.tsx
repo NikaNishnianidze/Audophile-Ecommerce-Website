@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 import Layout from "./Layout/Layout";
 import Home from "./components/Home";
+import EcommerceProvider from "./context/EcommerceProvider";
+import Headphones from "./components/Headphones";
 
 const router = createBrowserRouter([
   {
@@ -17,12 +19,18 @@ const router = createBrowserRouter([
         path: "/home",
         element: <Home />,
       },
+      {
+        path: "/headphones",
+        element: <Headphones />,
+      },
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <EcommerceProvider>
+      <RouterProvider router={router} />
+    </EcommerceProvider>
   </StrictMode>
 );
