@@ -14,7 +14,15 @@ export default function Home() {
   const handleSeeHeadphones = () => {
     navigate("/headphones");
   };
-
+  const handleSeeSpeakers = () => {
+    navigate("/speakers");
+  };
+  const handleSeeEarphones = () => {
+    navigate("/earphones");
+  };
+  const handleGoHome = () => {
+    navigate("/home");
+  };
   return (
     <div className="flex flex-col items-center">
       {menu && (
@@ -43,7 +51,10 @@ export default function Home() {
                 <img src={arrowRight} alt="arrow right" />
               </div>
             </div>
-            <div className="speakers-box w-[327px] rounded-[8px] bg-shopitems flex flex-col items-center relative mt-[68px]">
+            <div
+              onClick={handleSeeSpeakers}
+              className="speakers-box w-[327px] rounded-[8px] bg-shopitems flex flex-col items-center relative mt-[68px]"
+            >
               <img
                 src={homeSpeaker}
                 alt="home speakers"
@@ -59,7 +70,10 @@ export default function Home() {
                 <img src={arrowRight} alt="arrow right" />
               </div>
             </div>
-            <div className="earphones-box w-[327px] rounded-[8px] bg-shopitems flex flex-col items-center relative mt-[68px]">
+            <div
+              onClick={handleSeeEarphones}
+              className="earphones-box w-[327px] rounded-[8px] bg-shopitems flex flex-col items-center relative mt-[68px]"
+            >
               <img
                 src={homeEarphones}
                 alt="home headphones"
@@ -113,7 +127,10 @@ export default function Home() {
           <img src={arrowRight} alt="arrow right" />
         </div>
       </div>
-      <div className="speakers-box w-[327px] rounded-[8px] bg-shopitems flex flex-col items-center relative mt-[68px]">
+      <div
+        onClick={handleSeeSpeakers}
+        className="speakers-box w-[327px] rounded-[8px] bg-shopitems flex flex-col items-center relative mt-[68px]"
+      >
         <img
           src={homeSpeaker}
           alt="home speakers"
@@ -127,7 +144,10 @@ export default function Home() {
           <img src={arrowRight} alt="arrow right" />
         </div>
       </div>
-      <div className="earphones-box w-[327px] rounded-[8px] bg-shopitems flex flex-col items-center relative mt-[68px]">
+      <div
+        onClick={handleSeeEarphones}
+        className="earphones-box w-[327px] rounded-[8px] bg-shopitems flex flex-col items-center relative mt-[68px]"
+      >
         <img
           src={homeEarphones}
           alt="home headphones"
@@ -202,10 +222,10 @@ export default function Home() {
           <img src={logo} alt="logo icon" />
         </div>
         <ul className="mt-[48px] flex flex-col items-center gap-[16px] text-[13px] text-white font-bold leading-[25px]">
-          <li>HOME</li>
+          <li onClick={handleGoHome}>HOME</li>
           <li onClick={handleSeeHeadphones}>HEADPHONES</li>
-          <li>SPEAKERS</li>
-          <li>EARPHONES</li>
+          <li onClick={handleSeeSpeakers}>SPEAKERS</li>
+          <li onClick={handleSeeEarphones}>EARPHONES</li>
         </ul>
         <p className="w-[327px] mt-[48px] text-center text-white font-bold text-[15px]">
           Audiophile is an all in one stop to fulfill your audio

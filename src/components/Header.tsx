@@ -9,8 +9,8 @@ export default function Header() {
     setMenu(!menu);
   };
   return (
-    <>
-      <header className="w-full flex items-center justify-between py-[32px] px-[24px] border-b-[1px] border-white bg-header">
+    <div className="flex flex-col items-center">
+      <header className="w-[375px] flex items-center justify-between py-[32px] px-[24px] border-b-[1px] border-white bg-header">
         <div className="hamburger">
           <img
             onClick={handleMenu}
@@ -25,6 +25,6 @@ export default function Header() {
           <img src={cart} alt="cart icon" />
         </div>
       </header>
-    </>
+    </div>
   );
 }

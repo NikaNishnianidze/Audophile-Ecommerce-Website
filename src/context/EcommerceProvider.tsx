@@ -31,7 +31,7 @@ export default function EcommerceProvider({
   children: ReactNode;
 }) {
   const [addToCart, setAddToCart] = useState(null);
-  const [products, setProducts] = useState(data);
+  const [products, setProducts] = useState<Product[]>(data);
   const [menu, setMenu] = useState<boolean>(false);
 
   return (

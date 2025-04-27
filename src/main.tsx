@@ -8,7 +8,7 @@ import {
 import Layout from "./Layout/Layout";
 import Home from "./components/Home";
 import EcommerceProvider from "./context/EcommerceProvider";
-import Headphones from "./components/Headphones";
+import Products from "./components/Products";
 
 const router = createBrowserRouter([
   {
@@ -20,8 +20,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/headphones",
-        element: <Headphones />,
+        path: "/:product",
+        element: <Products />,
       },
     ],
   },
