@@ -11,6 +11,8 @@ interface IContext {
   setMenu: (menu: boolean) => void;
   productAmount: number;
   setProductAmount: (productAmount: number) => void;
+  cart: Product[];
+  setCart: (cart: Product[]) => void;
 }
 
 const ecommerceContext = createContext<IContext>({
@@ -22,6 +24,8 @@ const ecommerceContext = createContext<IContext>({
   setMenu: () => {},
   productAmount: 1,
   setProductAmount: () => {},
+  cart: [],
+  setCart: () => {},
 });
 
 export default function EcommerceProvider({
@@ -33,6 +37,7 @@ export default function EcommerceProvider({
   const [products, setProducts] = useState<Product[]>(data);
   const [menu, setMenu] = useState<boolean>(false);
   const [productAmount, setProductAmount] = useState(1);
+  const [cart, setCart] = useState<Product[]>([]);
 
   return (
     <>
@@ -46,6 +51,8 @@ export default function EcommerceProvider({
           setMenu,
           productAmount,
           setProductAmount,
+          cart,
+          setCart,
         }}
       >
         {children}

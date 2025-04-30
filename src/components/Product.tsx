@@ -6,9 +6,11 @@ import homeSpeaker from "../../public/assets/home/mobile/image-speaker-zx9.png";
 import homeEarphones from "../../public/assets/home/mobile/d47b304d532a222f08c1500c16aa3ed52c16aa20.png";
 import logo from "../../public/assets/audiophile 2.svg";
 import socials from "../../public/assets/Group 30.svg";
+import { useEffect } from "react";
 
 export default function Product() {
-  const { products, productAmount, setProductAmount } = useEcommerce();
+  const { products, productAmount, setProductAmount, cart, setCart } =
+    useEcommerce();
   const { id } = useParams();
   const product = products.find((item) => item.id.toString() === id);
   const navigate = useNavigate();
@@ -35,6 +37,26 @@ export default function Product() {
     navigate("/home");
     window.scrollTo(0, 0);
   };
+
+  const handleAddToCart = (id: number) => {
+    const productToAdd = products.find((item) => item.id === id);
+    if (!productToAdd) {
+      console.error("Product not found");
+      return;
+    }
+    const updatedCart = [
+      ...cart,
+      {
+        ...productToAdd,
+        quantity: productAmount,
+        total: productToAdd.price * productAmount,
+      },
+    ];
+    setCart(updatedCart);
+    setProductAmount(1);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
   return (
     <div className="flex flex-col items-center">
       <div className="goback mt-[16px] w-[327px]">
@@ -88,7 +110,10 @@ export default function Product() {
                 +
               </p>
             </div>
-            <button className="uppercase text-[#fff] text-[13px] font-bold w-[160px] py-[15px] bg-product text-center">
+            <button
+              onClick={() => handleAddToCart(product.id)}
+              className="uppercase text-[#fff] text-[13px] font-bold w-[160px] py-[15px] bg-product text-center"
+            >
               add to cart
             </button>
           </div>
