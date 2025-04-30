@@ -10,7 +10,8 @@ import logo from "../../public/assets/audiophile 2.svg";
 import socials from "../../public/assets/Group 30.svg";
 
 export default function SlugProduct() {
-  const { products, productAmount, setProductAmount } = useEcommerce();
+  const { products, productAmount, setProductAmount, cart, setCart } =
+    useEcommerce();
   const { id } = useParams();
   const [product, setProduct] = useState<Product | null>(
     () => products.find((item) => item.slug === id) || null
@@ -45,6 +46,25 @@ export default function SlugProduct() {
   const handleGoHome = () => {
     navigate("/home");
     window.scrollTo(0, 0);
+  };
+
+  const handleAddToCart = (id: number, name: string) => {
+    const product = products.find((p) => p.id === id);
+    if (!product) return;
+    const newProduct = {
+      id: product.id,
+      image: product.categoryImage.mobile,
+      name: product.name,
+      price: product.price.toString(),
+      quantity: productAmount,
+      total: product.price * productAmount,
+      slug: name,
+    };
+    const updatedCart = [...cart, newProduct];
+
+    setCart(updatedCart);
+    setProductAmount(1);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
   return (
     <div className="flex flex-col items-center">
@@ -99,7 +119,10 @@ export default function SlugProduct() {
                 +
               </p>
             </div>
-            <button className="uppercase text-[#fff] text-[13px] font-bold w-[160px] py-[15px] bg-product text-center">
+            <button
+              onClick={() => handleAddToCart(product.id, product.name)}
+              className="uppercase text-[#fff] text-[13px] font-bold w-[160px] py-[15px] bg-product text-center"
+            >
               add to cart
             </button>
           </div>

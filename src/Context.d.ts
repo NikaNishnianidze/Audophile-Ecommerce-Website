@@ -50,3 +50,15 @@ export interface Product {
 }
 
 export type Products = Product[];
+
+interface CartItem {
+  id: number;
+  name: string;
+  image: string;
+  price: string;
+  quantity: number;
+  total: number;
+  slug?: string;
+}
+
+export type TCartItem = CartItem[];

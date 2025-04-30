@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useState, useContext } from "react";
 import data from "../data.json";
 import { Product } from "../Context";
+import { TCartItem } from "../Context"; // Adjust the path to where ICart is defined
 
 interface IContext {
   products: Product[];
@@ -11,8 +12,8 @@ interface IContext {
   setMenu: (menu: boolean) => void;
   productAmount: number;
   setProductAmount: (productAmount: number) => void;
-  cart: Product[];
-  setCart: (cart: Product[]) => void;
+  cart: TCartItem;
+  setCart: (cart: TCartItem) => void;
 }
 
 const ecommerceContext = createContext<IContext>({
@@ -37,7 +38,9 @@ export default function EcommerceProvider({
   const [products, setProducts] = useState<Product[]>(data);
   const [menu, setMenu] = useState<boolean>(false);
   const [productAmount, setProductAmount] = useState(1);
-  const [cart, setCart] = useState<Product[]>([]);
+  const [cart, setCart] = useState<TCartItem>(
+    JSON.parse(localStorage.getItem("cart") || "[]")
+  );
 
   return (
     <>

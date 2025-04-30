@@ -6,7 +6,6 @@ import homeSpeaker from "../../public/assets/home/mobile/image-speaker-zx9.png";
 import homeEarphones from "../../public/assets/home/mobile/d47b304d532a222f08c1500c16aa3ed52c16aa20.png";
 import logo from "../../public/assets/audiophile 2.svg";
 import socials from "../../public/assets/Group 30.svg";
-import { useEffect } from "react";
 
 export default function Product() {
   const { products, productAmount, setProductAmount, cart, setCart } =
@@ -38,20 +37,20 @@ export default function Product() {
     window.scrollTo(0, 0);
   };
 
-  const handleAddToCart = (id: number) => {
-    const productToAdd = products.find((item) => item.id === id);
-    if (!productToAdd) {
-      console.error("Product not found");
-      return;
-    }
-    const updatedCart = [
-      ...cart,
-      {
-        ...productToAdd,
-        quantity: productAmount,
-        total: productToAdd.price * productAmount,
-      },
-    ];
+  const handleAddToCart = (id: number, name: string) => {
+    const product = products.find((p) => p.id === id);
+
+    if (!product) return;
+    const newProduct = {
+      id: product.id,
+      image: product.categoryImage.mobile,
+      name: product.name,
+      price: product.price.toString(),
+      quantity: productAmount,
+      total: product.price * productAmount,
+      slug: name,
+    };
+    const updatedCart = [...cart, newProduct];
     setCart(updatedCart);
     setProductAmount(1);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
@@ -111,7 +110,7 @@ export default function Product() {
               </p>
             </div>
             <button
-              onClick={() => handleAddToCart(product.id)}
+              onClick={() => handleAddToCart(product.id, product.name)}
               className="uppercase text-[#fff] text-[13px] font-bold w-[160px] py-[15px] bg-product text-center"
             >
               add to cart
