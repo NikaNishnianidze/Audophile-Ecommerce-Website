@@ -1,9 +1,4 @@
-import {
-  createContext,
-  ReactNode,
-  useState,
-  useContext,
-} from "react";
+import { createContext, ReactNode, useState, useContext } from "react";
 import data from "../data.json";
 import { Product } from "../Context";
 
@@ -14,6 +9,8 @@ interface IContext {
   setAddToCart: (addToCart: any) => void;
   menu: boolean;
   setMenu: (menu: boolean) => void;
+  productAmount: number;
+  setProductAmount: (productAmount: number) => void;
 }
 
 const ecommerceContext = createContext<IContext>({
@@ -23,6 +20,8 @@ const ecommerceContext = createContext<IContext>({
   setAddToCart: () => {},
   menu: false,
   setMenu: () => {},
+  productAmount: 1,
+  setProductAmount: () => {},
 });
 
 export default function EcommerceProvider({
@@ -33,6 +32,7 @@ export default function EcommerceProvider({
   const [addToCart, setAddToCart] = useState(null);
   const [products, setProducts] = useState<Product[]>(data);
   const [menu, setMenu] = useState<boolean>(false);
+  const [productAmount, setProductAmount] = useState(1);
 
   return (
     <>
@@ -44,6 +44,8 @@ export default function EcommerceProvider({
           setProducts,
           menu,
           setMenu,
+          productAmount,
+          setProductAmount,
         }}
       >
         {children}
