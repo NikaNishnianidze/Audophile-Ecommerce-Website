@@ -8,11 +8,13 @@
   --color-speaker: #d87d4a;
   --color-zx7: #f1f1f1;
   --color-footer: #101010;
+  --color-bordercolor: #cfcfcf;
 }
 
 body {
   font-family: "Manrope", sans-serif;
   min-height: 100vh;
+  background-color: #fafafa;
 }
 
 .new-product {
@@ -23,16 +25,64 @@ body {
 }
 
 .zx7 {
-  background: url(/public/assets/home/mobile/image-speaker-zx7.jpg)
-    lightgray 0px 0px / 100% 100% no-repeat;
+  background: url(/public/assets/home/mobile/image-speaker-zx7.jpg) lightgray
+    0px 0px / 100% 100% no-repeat;
 }
 
 .earphones-photo {
-  background: url(/public/assets/home/mobile/image-earphones-yx1.jpg)
-    lightgray 0px 0px / 100% 100% no-repeat;
+  background: url(/public/assets/home/mobile/image-earphones-yx1.jpg) lightgray
+    0px 0px / 100% 100% no-repeat;
 }
 
 .photo {
-  background: url(/public/assets/shared/mobile/image-best-gear.jpg)
-    lightgray 0px 0px / 100% 100% no-repeat;
+  background: url(/public/assets/shared/mobile/image-best-gear.jpg) lightgray
+    0px 0px / 100% 100% no-repeat;
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"] + label .circle-checkbox {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #cfcfcf;
+  background-color: #fff;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+input[type="checkbox"]:checked + label .circle-checkbox::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #d87d4a;
+  transform: translate(-50%, -50%);
+}
+
+input[type="checkbox"]:hover + label .circle-checkbox {
+  background-color: #f8f8f8;
+}
+
+label {
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  user-select: none;
 }

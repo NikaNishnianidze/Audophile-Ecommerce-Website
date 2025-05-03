@@ -20,6 +20,14 @@ export default function Header() {
     setCart([]);
     localStorage.clear();
   };
+  const totalPrice = cart.reduce(
+    (acc, item) => acc + Number(item.price) * item.quantity,
+    0
+  );
+  const handleCheckout = () => {
+    navigate("/checkout");
+    setCartOpen(false);
+  };
 
   return (
     <div className="flex flex-col items-center">
@@ -40,7 +48,7 @@ export default function Header() {
             onClick={() => setCartOpen(false)}
             className="fixed w-full left-1/2 transform -translate-x-1/2 inset-0 top-0 bg-black/50 z-30"
           ></div>
-          <div className="absolute top-[90px] left-1/2 transform rounded-[8px] mt-[24px] py-[32px] px-[28px] -translate-x-1/2 left-0 w-[327px] bg-white z-40 p-6">
+          <div className="absolute top-[90px] left-1/2 transform rounded-[8px] mt-[24px] py-[32px] px-[20px] -translate-x-1/2 left-0 w-[327px] bg-white z-40 p-6">
             <div className="first-line flex items-center justify-between">
               <p className="text-black text-[18px] font-bold tracking-[1.286px]">
                 cart ({cart.length})
@@ -62,11 +70,81 @@ export default function Header() {
                       className="w-[64px] h-[64px] rounded-8px"
                     />
                     <div className="name-price flex flex-col">
-                      <p>{item.slug}</p>
+                      <p className="text-black text-[15px] font-bold">
+                        {item.slug}
+                      </p>
+                      <p className="text-black/50 text-[14px] font-bold">
+                        $ {Number(item.price).toLocaleString()}
+                      </p>
+                    </div>
+                    <div className="quantity">
+                      <div className="amount bg-zx7 w-[96px] py-[15px] text-center px-[15.5] flex items-center gap-[20px] justify-center rounded-[8px]">
+                        <p
+                          onClick={() => {
+                            if (item.quantity > 1) {
+                              const updatedCart = cart.map((cartItem, i) =>
+                                i === index
+                                  ? {
+                                      ...cartItem,
+                                      quantity: cartItem.quantity - 1,
+                                    }
+                                  : cartItem
+                              );
+                              setCart(updatedCart);
+                              localStorage.setItem(
+                                "cart",
+                                JSON.stringify(updatedCart)
+                              );
+                            }
+                          }}
+                          className="text-black/25 text-[13px] font-bold"
+                        >
+                          -
+                        </p>
+                        <p className="text-black text-[13px] font-bold">
+                          {item.quantity}
+                        </p>
+                        <p
+                          onClick={() => {
+                            const updatedCart = cart.map((cartItem, i) =>
+                              i === index
+                                ? {
+                                    ...cartItem,
+                                    quantity: cartItem.quantity + 1,
+                                  }
+                                : cartItem
+                            );
+                            setCart(updatedCart);
+                            localStorage.setItem(
+                              "cart",
+                              JSON.stringify(updatedCart)
+                            );
+                          }}
+                          className="text-black/25 text-[13px] font-bold"
+                        >
+                          +
+                        </p>
+                      </div>
                     </div>
                   </div>
                 );
               })}
+            </div>
+            <div className="total-price mt-[32px] flex items-center justify-between">
+              <p className="uppercase text-black/50 font-bold text-[15px]">
+                total
+              </p>
+              <p className="text-black font-bold text-[18px] uppercase">
+                $ {totalPrice.toLocaleString()}
+              </p>
+            </div>
+            <div className="button flex flex-col items-center">
+              <button
+                onClick={handleCheckout}
+                className="mt-[24px] uppercase text-center text-white font-bold text-[13px] w-[271px] py-[15px] bg-product"
+              >
+                checkout
+              </button>
             </div>
           </div>
         </>

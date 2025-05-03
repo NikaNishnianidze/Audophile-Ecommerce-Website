@@ -8,6 +8,7 @@ import EcommerceProvider from "./context/EcommerceProvider";
 import Products from "./components/Products";
 import Product from "./components/Product";
 import SlugProduct from "./components/SlugProduct";
+import Checkout from "./components/Checkout";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/product/:id",
         element: <SlugProduct />,
+      },
+      {
+        path: "/checkout",
+        element: <Checkout />,
       },
     ],
   },
