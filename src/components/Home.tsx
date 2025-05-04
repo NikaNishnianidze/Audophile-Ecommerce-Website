@@ -27,6 +27,18 @@ export default function Home() {
     navigate("/home");
     window.scrollTo(0, 0);
   };
+  const handleSeeMarkII = () => {
+    navigate(`/:product/${4}`);
+  };
+  const handleSeeZx9 = () => {
+    navigate(`/:product/${6}`);
+  };
+  const handleSeeZx7 = () => {
+    navigate(`/:product/${5}`);
+  };
+  const handleSeeYx1 = () => {
+    navigate(`/:product/${1}`);
+  };
   return (
     <div className="flex flex-col items-center">
       {menu && (
@@ -102,7 +114,7 @@ export default function Home() {
           for the passionate music enthusiast.
         </p>
         <button
-          onClick={handleSeeHeadphones}
+          onClick={handleSeeMarkII}
           className="mt-[28px] mb-[90px] bg-product w-[160px] py-[15px] text-white text-[13px] font-bold uppercase"
         >
           See Product
@@ -168,13 +180,19 @@ export default function Home() {
           Upgrade to premium speakers that are phenomenally built to deliver
           truly remarkable sound.
         </p>
-        <button className="mt-[24px] w-[160px] py-[15px] bg-black text-white text-[13px] font-bold mb-[55px]">
+        <button
+          onClick={handleSeeZx9}
+          className="mt-[24px] w-[160px] py-[15px] bg-black text-white text-[13px] font-bold mb-[55px]"
+        >
           SEE PRODUCT
         </button>
       </div>
       <div className="zx7 w-[327px] h-[315px] mt-[30px] bg-zx7 py-[101px] pl-[25px] rounded-[8px]">
         <h3 className="text-[28px] text-black font-bold">ZX7 SPEAKER</h3>
-        <button className="w-[160px] py-[15px] border-black border-[1px] mt-[32px] text-black text-[13px] font-bold">
+        <button
+          onClick={handleSeeZx7}
+          className="w-[160px] py-[15px] border-black border-[1px] mt-[32px] text-black text-[13px] font-bold"
+        >
           SEE PRODUCT
         </button>
       </div>
@@ -182,7 +200,10 @@ export default function Home() {
         <div className="earphones-photo w-[327px] h-[200px] rounded-[8px]"></div>
         <div className="product w-[327px] py-[41px] rounded-[8px] bg-zx7 pl-[24px]">
           <h3 className="text-[28px] text-black font-bold">YX1 EARPHONES</h3>
-          <button className="w-[160px] py-[15px] border-black border-[1px] mt-[32px] text-black text-[13px] font-bold">
+          <button
+            onClick={handleSeeYx1}
+            className="w-[160px] py-[15px] border-black border-[1px] mt-[32px] text-black text-[13px] font-bold"
+          >
             SEE PRODUCT
           </button>
         </div>

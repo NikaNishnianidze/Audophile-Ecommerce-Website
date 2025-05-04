@@ -4,6 +4,12 @@ import * as yup from "yup";
 import { IMaskInput } from "react-imask";
 import { IInputs } from "../Inputs";
 import { useEcommerce } from "../context/EcommerceProvider";
+import logo from "../../public/assets/audiophile 2.svg";
+import { useNavigate } from "react-router-dom";
+import socials from "../../public/assets/Group 30.svg";
+import { Controller } from "react-hook-form";
+import { useState } from "react";
+import done from "../../public/assets/checkout/icon-order-confirmation.svg";
 
 const handleGoBack = () => {
   window.history.back();
@@ -29,18 +35,49 @@ const schema: yup.ObjectSchema<IInputs> = yup.object({
     .required("Payment method is required"),
   emoneyNumber: yup
     .number()
+    .transform((value, originalValue) =>
+      String(originalValue).trim() === "" ? undefined : value
+    )
     .required("emoney number is required!")
-    .integer("number must be an integer"),
+    .typeError("emoney number must be a number"),
   pin: yup
     .number()
+    .transform((value, originalValue) =>
+      String(originalValue).trim() === "" ? undefined : value
+    )
     .required("pin is required")
-    .integer("number must be an integer"),
+    .typeError("pin must be a number"),
 });
 
 export default function Checkout() {
+  const [thankYou, setThankYou] = useState<boolean>(false);
+  const navigate = useNavigate();
+  const handleSeeHeadphones = () => {
+    navigate("/headphones");
+    window.scrollTo(0, 0);
+  };
+  const handleSeeSpeakers = () => {
+    navigate("/speakers");
+    window.scrollTo(0, 0);
+  };
+  const handleSeeEarphones = () => {
+    navigate("/earphones");
+    window.scrollTo(0, 0);
+  };
+  const handleGoHome = () => {
+    navigate("/home");
+    window.scrollTo(0, 0);
+  };
+
+  const onSubmit: SubmitHandler<IInputs> = (data) => {
+    console.log("Form submitted:", data);
+    setThankYou(true);
+  };
+
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm<IInputs>({
     resolver: yupResolver(schema),
@@ -61,7 +98,7 @@ export default function Checkout() {
         <p className="mt-[32px] tracking-[0.929px] text-[#D87D4A] text-[13px] font-bold">
           Billing details
         </p>
-        <form>
+        <form id="invoiceForm">
           <div className="name flex flex-col gap-[9px] mt-[16px]">
             <label
               htmlFor="name"
@@ -73,9 +110,15 @@ export default function Checkout() {
               type="text"
               id="name"
               {...register("name")}
+              style={{
+                border: errors.name ? "1px solid #CD2C2C" : "1px solid #CFCFCF",
+              }}
               className="w-[280px] rounded-[8px] bg-white py-[18px] border-[1px] border-bordercolor pl-[24px] outline-none"
               placeholder="Alexei Ward"
             />
+            <p className="text-[#CD2C2C] text-[12px] font-normal">
+              {errors.name?.message}
+            </p>
           </div>
           <div className="email flex flex-col gap-[9px] mt-[16px]">
             <label
@@ -87,10 +130,18 @@ export default function Checkout() {
             <input
               type="text"
               id="email"
+              style={{
+                border: errors.email
+                  ? "1px solid #CD2C2C"
+                  : "1px solid #CFCFCF",
+              }}
               {...register("email")}
               className="w-[280px] rounded-[8px] bg-white py-[18px] border-[1px] border-bordercolor pl-[24px] outline-none"
               placeholder="alexei@mail.com"
             />
+            <p className="text-[#CD2C2C] text-[12px] font-normal">
+              {errors.email?.message}
+            </p>
           </div>
           <div className="number flex flex-col gap-[9px] mt-[16px]">
             <label
@@ -99,12 +150,26 @@ export default function Checkout() {
             >
               Phone Number
             </label>
-            <IMaskInput
-              mask="+1 000-000-0000"
-              {...register("number")}
-              className="w-[280px] rounded-[8px] bg-white py-[18px] border-[1px] border-bordercolor pl-[24px] outline-none"
-              placeholder="+1 202-555-0136"
+            <Controller
+              name="number"
+              control={control}
+              render={({ field }) => (
+                <IMaskInput
+                  {...field}
+                  mask="+1 000-000-0000"
+                  style={{
+                    border: errors.number
+                      ? "1px solid #CD2C2C"
+                      : "1px solid #CFCFCF",
+                  }}
+                  className="w-[280px] rounded-[8px] bg-white py-[18px] border-[1px] border-bordercolor pl-[24px] outline-none"
+                  placeholder="+1 202-555-0136"
+                />
+              )}
             />
+            <p className="text-[#CD2C2C] text-[12px] font-normal">
+              {errors.number?.message}
+            </p>
           </div>
           <div className="shipping-info mt-[32px]">
             <p className="uppercase text-[#D87D4A] text-[13px] font-bold tracking-[0.929]">
@@ -121,9 +186,17 @@ export default function Checkout() {
             <input
               id="address"
               {...register("address")}
+              style={{
+                border: errors.address
+                  ? "1px solid #CD2C2C"
+                  : "1px solid #CFCFCF",
+              }}
               className="w-[280px] rounded-[8px] bg-white py-[18px] border-[1px] border-bordercolor pl-[24px] outline-none"
               placeholder="1137 Williams Avenue"
             />
+            <p className="text-[#CD2C2C] text-[12px] font-normal">
+              {errors.address?.message}
+            </p>
           </div>
           <div className="zip flex flex-col gap-[9px] mt-[16px]">
             <label
@@ -135,10 +208,16 @@ export default function Checkout() {
             <input
               id="zip"
               maxLength={4}
+              style={{
+                border: errors.zip ? "1px solid #CD2C2C" : "1px solid #CFCFCF",
+              }}
               {...register("zip")}
               className="w-[280px] rounded-[8px] bg-white py-[18px] border-[1px] border-bordercolor pl-[24px] outline-none"
               placeholder="10001"
             />
+            <p className="text-[#CD2C2C] text-[12px] font-normal">
+              {errors.zip?.message}
+            </p>
           </div>
           <div className="city flex flex-col gap-[9px] mt-[16px]">
             <label
@@ -149,11 +228,16 @@ export default function Checkout() {
             </label>
             <input
               id="city"
-              maxLength={4}
               {...register("city")}
+              style={{
+                border: errors.city ? "1px solid #CD2C2C" : "1px solid #CFCFCF",
+              }}
               className="w-[280px] rounded-[8px] bg-white py-[18px] border-[1px] border-bordercolor pl-[24px] outline-none"
               placeholder="New York"
             />
+            <p className="text-[#CD2C2C] text-[12px] font-normal">
+              {errors.city?.message}
+            </p>
           </div>
           <div className="country flex flex-col gap-[9px] mt-[16px]">
             <label
@@ -164,11 +248,18 @@ export default function Checkout() {
             </label>
             <input
               id="country"
-              maxLength={4}
               {...register("country")}
+              style={{
+                border: errors.country
+                  ? "1px solid #CD2C2C"
+                  : "1px solid #CFCFCF",
+              }}
               className="w-[280px] rounded-[8px] bg-white py-[18px] border-[1px] border-bordercolor pl-[24px] outline-none"
               placeholder="United States"
             />
+            <p className="text-[#CD2C2C] text-[12px] font-normal">
+              {errors.country?.message}
+            </p>
           </div>
           <div className="method mt-[32px]">
             <p className="uppercase text-[#D87D4A] text-[13px] font-bold tracking-[0.929px]">
@@ -182,18 +273,37 @@ export default function Checkout() {
             <div className="e-money w-[280px] py-[18px] pl-[16px] bg-white border-bordercolor border-[1px] rounded-[8px]">
               <div className="checkbox-wrapper">
                 <input
-                  type="checkbox"
-                  id="circleCheckbox"
+                  type="radio"
+                  id="emoney"
+                  value="emoney"
                   {...register("payment")}
+                  style={{
+                    border: errors.payment
+                      ? "1px solid #CD2C2C"
+                      : "1px solid #CFCFCF",
+                  }}
                 />
-                <label htmlFor="circleCheckbox">
+
+                <label htmlFor="emoney">
                   <span className="circle-checkbox"></span>e-Money
                 </label>
               </div>
             </div>
+            <p className="text-[#CD2C2C] text-[12px] font-normal"></p>
             <div className="e-money w-[280px] py-[18px] pl-[16px] bg-white border-bordercolor border-[1px] rounded-[8px]">
               <div className="checkbox-wrapper">
-                <input type="checkbox" id="cash" {...register("payment")} />
+                <input
+                  type="radio"
+                  id="cash"
+                  value="cash"
+                  {...register("payment")}
+                  style={{
+                    border: errors.payment
+                      ? "1px solid #CD2C2C"
+                      : "1px solid #CFCFCF",
+                  }}
+                />
+                <p>{errors.payment?.message}</p>
                 <label htmlFor="cash">
                   <span className="circle-checkbox"></span>Cash on Delivery
                 </label>
@@ -211,9 +321,17 @@ export default function Checkout() {
               id="emoneyNumber"
               maxLength={9}
               {...register("emoneyNumber")}
+              style={{
+                border: errors.emoneyNumber
+                  ? "1px solid #CD2C2C"
+                  : "1px solid #CFCFCF",
+              }}
               className="w-[280px] rounded-[8px] bg-white py-[18px] border-[1px] border-bordercolor pl-[24px] outline-none"
               placeholder="238521993"
             />
+            <p className="text-[#CD2C2C] text-[12px] font-normal">
+              {errors.emoneyNumber?.message}
+            </p>
           </div>
           <div className="pin flex flex-col gap-[9px] mt-[16px]">
             <label
@@ -226,9 +344,15 @@ export default function Checkout() {
               id="pin"
               maxLength={4}
               {...register("pin")}
+              style={{
+                border: errors.pin ? "1px solid #CD2C2C" : "1px solid #CFCFCF",
+              }}
               className="w-[280px] rounded-[8px] bg-white py-[18px] border-[1px] border-bordercolor pl-[24px] outline-none"
               placeholder="6891"
             />
+            <p className="text-[#CD2C2C] text-[12px] font-normal">
+              {errors.pin?.message}
+            </p>
           </div>
         </form>
       </div>
@@ -314,10 +438,112 @@ export default function Checkout() {
             </p>
           </div>
         </div>
-        <button className="uppercase text-white text-[13px] font-bold mt-[32px] w-[279px] py-[15px] bg-product">
+        <button
+          onClick={handleSubmit(onSubmit)}
+          type="submit"
+          className="uppercase text-white text-[13px] font-bold mt-[32px] w-[279px] py-[15px] bg-product"
+        >
           continue & pay
         </button>
       </div>
+      <footer className="w-full bg-footer mt-[120px] flex flex-col items-center">
+        <div className="rectangle w-[101px] h-[4px] bg-speaker"></div>
+        <div className="logo mt-[48px]">
+          <img src={logo} alt="logo icon" />
+        </div>
+        <ul className="mt-[48px] flex flex-col items-center gap-[16px] text-[13px] text-white font-bold leading-[25px]">
+          <li onClick={handleGoHome}>HOME</li>
+          <li onClick={handleSeeHeadphones}>HEADPHONES</li>
+          <li onClick={handleSeeSpeakers}>SPEAKERS</li>
+          <li onClick={handleSeeEarphones}>EARPHONES</li>
+        </ul>
+        <p className="w-[327px] mt-[48px] text-center text-white font-bold text-[15px]">
+          Audiophile is an all in one stop to fulfill your audio needs. We're a
+          small team of music lovers and sound specialists who are devoted to
+          helping you get the most out of personal audio. Come and visit our
+          demo facility - we’re open 7 days a week.
+        </p>
+        <p className="mt-[48px] text-[15px] text-white font-bold">
+          Copyright 2021. All Rights Reserved
+        </p>
+        <div className="socials mt-[48px] mb-[38px]">
+          <img src={socials} alt="socials" />
+        </div>
+      </footer>
+      {thankYou && (
+        <div>
+          <div className="fixed w-full left-1/2 transform -translate-x-1/2 inset-0 top-0 bg-black/50 z-30"></div>
+          <div className="absolute top-[90px] left-1/2 transform rounded-[8px] mt-[24px] py-[32px] px-[20px] -translate-x-1/2 left-0 w-[327px] bg-white z-40 p-6">
+            <img src={done} alt="confirmation icon" />
+            <p className="mt-[23px] text-black text-[24px] font-bold">
+              THANK YOU FOR YOUR ORDER
+            </p>
+            <p className="mt-[16px] text-[15px] font-normal text-black/50">
+              You will receive an email confirmation shortly.
+            </p>
+            <div className="container flex justify-center mt-[24px]">
+              <div className="grandtotal-container w-[263px] rounded-[8px] bg-shopitems pt-[24px] ">
+                <div className="first-item flex justify-between px-[24px]">
+                  <div className="image-price flex gap-[16px] items-center">
+                    <div className="image">
+                      <img
+                        src={cart[0].image}
+                        alt="first item image"
+                        className="w-[50px] h-[50px]"
+                      />
+                    </div>
+                    <div className="price-name flex flex-col ">
+                      <p className="text-black text-[15px] font-bold">
+                        {cart[0].name}
+                      </p>
+                      <p className="text-black/50 text-[14px] font-bold">
+                        $ {cart[0].price}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="quantity">
+                    <p className="text-black/50 text-[14px] font-bold">
+                      {cart[0].quantity}x
+                    </p>
+                  </div>
+                </div>
+                <div className="divider mt-[12px]  w-[215px] h-[1px] bg-black/50 ml-[24px]"></div>
+                {cart.length > 1 ? (
+                  <p className="mt-[12px] text-center text-black/50 text-[12px] font-bold">
+                    and {cart.length - 1} other item(s)
+                  </p>
+                ) : null}
+                <div className="grandtotal-price w-[263px] mt-[25px] rounded-b-[8px] bg-black py-[16px] pl-[24px]">
+                  <p className="uppercase text-white/50 text-[15px] font-normal">
+                    Grand Total
+                  </p>
+                  <p className="text-white mt-[8px] text-[18px] font-bold uppercase">
+                    {(() => {
+                      const total = cart.reduce(
+                        (acc, item) => acc + Number(item.price) * item.quantity,
+                        0
+                      );
+                      const tax = 50;
+                      const grandTotal = total + tax;
+                      localStorage.setItem("grandTotal", grandTotal.toString());
+
+                      return `$${grandTotal.toLocaleString()}`;
+                    })()}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="button flex justify-center">
+              <button
+                onClick={handleGoHome}
+                className="uppercase text-white font-bold text-[13px] text-center w-[263px] py-[15px] bg-product mt-[23px]"
+              >
+                back to home
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

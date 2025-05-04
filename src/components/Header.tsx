@@ -25,8 +25,12 @@ export default function Header() {
     0
   );
   const handleCheckout = () => {
-    navigate("/checkout");
-    setCartOpen(false);
+    if (cart.length > 0) {
+      navigate("/checkout");
+      setCartOpen(false);
+    } else {
+      return;
+    }
   };
 
   return (
