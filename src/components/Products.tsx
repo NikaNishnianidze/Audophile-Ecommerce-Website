@@ -39,83 +39,85 @@ export default function Products() {
         <>
           <div
             onClick={() => setMenu(false)}
-            className="fixed w-[375px] left-1/2 transform -translate-x-1/2 inset-0 top-0 bg-black/50 z-30"
+            className="fixed w-[375px] left-1/2 tb:w-full transform -translate-x-1/2 inset-0 top-0 bg-black/50 z-30"
           ></div>
-          <div className="absolute top-[90px] left-1/2 transform -translate-x-1/2 left-0 w-[375px] bg-white z-40 p-6">
-            <div
-              onClick={handleSeeHeadphones}
-              className="headphones-box flex flex-col items-center w-[327px]  rounded-[8px] bg-shopitems mt-[75px] relative"
-            >
-              <img
-                src={homeHeadphones}
-                alt="home headphones"
-                className="w-[80px] h-[104px] absolute -top-11"
-              />
-              <p className="mt-[88px] text-[#000] text-[15px] font-bold">
-                HEADPHONES
-              </p>
-              <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
-                <p className="text-black/30 text-[13px] font-bold">SHOP</p>
-                <img src={arrowRight} alt="arrow right" />
+          <div className="absolute top-[90px] tb:w-full left-1/2 transform -translate-x-1/2 left-0 w-[375px] bg-white z-40 p-6">
+            <div className="aligment tb:flex tb:flex-row tb:mt-[56px] tb:gap-[10px] tb:justify-center">
+              <div
+                onClick={handleSeeHeadphones}
+                className="headphones-box flex flex-col items-center tb:w-[223px] w-[327px] tb:mt-0  rounded-[8px] bg-shopitems mt-[75px] relative"
+              >
+                <img
+                  src={homeHeadphones}
+                  alt="home headphones"
+                  className="w-[80px] h-[104px] absolute -top-11"
+                />
+                <p className="mt-[88px] text-[#000] text-[15px] font-bold">
+                  HEADPHONES
+                </p>
+                <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
+                  <p className="text-black/30 text-[13px] font-bold">SHOP</p>
+                  <img src={arrowRight} alt="arrow right" />
+                </div>
               </div>
-            </div>
-            <div
-              onClick={handleSeeSpeakers}
-              className="speakers-box w-[327px] rounded-[8px] bg-shopitems flex flex-col items-center relative mt-[68px]"
-            >
-              <img
-                src={homeSpeaker}
-                alt="home speakers"
-                className="w-[80px] h-[104px] absolute -top-11"
-              />
-              <p className="mt-[88px] text-[#000] text-[15px] font-bold">
-                SPEAKERS
-              </p>
-              <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
-                <p className="text-black/30 text-[13px] font-bold">SHOP</p>
-                <img src={arrowRight} alt="arrow right" />
+              <div
+                onClick={handleSeeSpeakers}
+                className="speakers-box w-[327px] rounded-[8px]  tb:w-[223px] bg-shopitems tb:mt-0 flex flex-col items-center relative mt-[68px]"
+              >
+                <img
+                  src={homeSpeaker}
+                  alt="home speakers"
+                  className="w-[80px] h-[104px] absolute -top-11 tb:w-[84px] tb:h-[101px]"
+                />
+                <p className="mt-[88px] text-[#000] text-[15px] font-bold">
+                  SPEAKERS
+                </p>
+                <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
+                  <p className="text-black/30 text-[13px] font-bold">SHOP</p>
+                  <img src={arrowRight} alt="arrow right" />
+                </div>
               </div>
-            </div>
-            <div
-              onClick={handleSeeEarphones}
-              className="earphones-box w-[327px] rounded-[8px] bg-shopitems flex flex-col items-center relative mt-[68px]"
-            >
-              <img
-                src={homeEarphones}
-                alt="home headphones"
-                className="w-[147px] h-[133px] absolute -top-11"
-              />
-              <p className="mt-[88px] text-[#000] text-[15px] font-bold">
-                EARPHONES
-              </p>
-              <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
-                <p className="text-black/30 text-[13px] font-bold">SHOP</p>
-                <img src={arrowRight} alt="arrow right" />
+              <div
+                onClick={handleSeeEarphones}
+                className="earphones-box w-[327px] rounded-[8px] tb:w-[223px] tb:mt-0 bg-shopitems flex flex-col items-center relative mt-[68px]"
+              >
+                <img
+                  src={homeEarphones}
+                  alt="home headphones"
+                  className="w-[147px] h-[133px] absolute -top-11"
+                />
+                <p className="mt-[88px] text-[#000] text-[15px] font-bold">
+                  EARPHONES
+                </p>
+                <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
+                  <p className="text-black/30 text-[13px] font-bold">SHOP</p>
+                  <img src={arrowRight} alt="arrow right" />
+                </div>
               </div>
             </div>
           </div>
         </>
       )}
-      <div className="product-category w-[375px] py-[32px] bg-black text-white flex flex-col items-center text-[28px] font-bold uppercase">
+      <div className="product-category w-[375px] tb:w-full tb:py-[100px] py-[32px] bg-black text-white flex flex-col items-center text-[28px] font-bold uppercase">
         <p>{product}</p>
       </div>
       {productData[0] && (
         <>
-          <div className="first-photo mt-[64px]">
+          <div className="first-photo mt-[64px] tb:mt-[120px]">
             <img
               src={productData[0].categoryImage.mobile}
               alt="product"
-              className="w-[327px] h-[352px] object-cover rounded-[8px]"
+              className="w-[327px] h-[352px] object-cover rounded-[8px] tb:w-[689px] tb:h-[550px]"
             />
           </div>
-          <div className="first-product-info mt-[32px] flex flex-col items-center gap-[24px] text-center">
-            <p className="text-[#D87D4A] text-[14px] font-normal">
+          <div className="first-product-info mt-[32px] flex flex-col tb:mt-[52px] items-center gap-[24px] tb:gap-[32px] text-center">
+            <p className="text-[#D87D4A] text-[14px] font-normal tb:tracking-[10px]">
               NEW PRODUCT
             </p>
-            <h3 className="text-black uppercase text-[28px] font-bold w-[250px]">
+            <h3 className="text-black uppercase text-[28px] font-bold w-[250px] tb:text-[40px]">
               {productData[0].name}
             </h3>
-            <p className="text-[15px] text-black/50 font-normal w-[327px]">
+            <p className="text-[15px] text-black/50 font-normal w-[327px] tb:w-[572px]">
               {productData[0].description}
             </p>
             <button
@@ -133,14 +135,14 @@ export default function Products() {
             <img
               src={productData[1].categoryImage.mobile}
               alt="product image"
-              className="w-[327px] h-[352px] object-cover rounded-[8px]"
+              className="w-[327px] h-[352px] object-cover rounded-[8px] tb:w-[689px] tb:h-[550px]"
             />
           </div>
-          <div className="second-product-info mt-[32px] flex flex-col items-center gap-[24px] text-center">
-            <h3 className="text-black uppercase text-[28px] font-bold w-[250px]">
+          <div className="second-product-info mt-[32px] tb:mt-[52px] tb:gap-[32px] flex flex-col items-center gap-[24px] text-center">
+            <h3 className="text-black uppercase text-[28px] font-bold w-[250px] tb:text-[40px] tb:w-[300px]">
               {productData[1].name}
             </h3>
-            <p className="text-[15px] text-black/50 font-normal w-[327px]">
+            <p className="text-[15px] text-black/50 font-normal w-[327px] tb:w-[572px] ">
               {productData[1].description}
             </p>
             <button
@@ -157,16 +159,16 @@ export default function Products() {
           <img
             src={productData[2].categoryImage.mobile}
             alt="product image"
-            className="w-[327px] h-[352px] object-cover rounded-[8px]"
+            className="w-[327px] h-[352px] object-cover rounded-[8px]  tb:w-[689px] tb:h-[550px]"
           />
         </div>
       )}
       {productData[2]?.name && productData[2]?.description && (
         <div className="third-product-info mt-[32px] flex flex-col items-center gap-[24px] text-center">
-          <h3 className="text-black uppercase text-[28px] font-bold w-[250px]">
+          <h3 className="text-black uppercase text-[28px] font-bold w-[250px] tb:text-[40px] tb:w-[300px]">
             {productData[2].name}
           </h3>
-          <p className="text-[15px] text-black/50 font-normal w-[327px]">
+          <p className="text-[15px] text-black/50 font-normal w-[327px] tb:w-[572px]">
             {productData[2].description}
           </p>
           <button
@@ -177,62 +179,68 @@ export default function Products() {
           </button>
         </div>
       )}
-      <div
-        onClick={handleSeeHeadphones}
-        className="headphones-box flex flex-col items-center w-[327px]  rounded-[8px] bg-shopitems mt-[172px] relative"
-      >
-        <img
-          src={homeHeadphones}
-          alt="home headphones"
-          className="w-[80px] h-[104px] absolute -top-11"
-        />
-        <p className="mt-[88px] text-[#000] text-[15px] font-bold">
-          HEADPHONES
-        </p>
-        <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
-          <p className="text-black/30 text-[13px] font-bold">SHOP</p>
-          <img src={arrowRight} alt="arrow right" />
+      <div className="handle-see-products tb:flex tb:flex-row tb:mt-[120px] tb:gap-[10px]">
+        <div
+          onClick={handleSeeHeadphones}
+          className="headphones-box flex flex-col items-center tb:mt-0 w-[327px] tb:w-[223px]  rounded-[8px] bg-shopitems mt-[172px] relative"
+        >
+          <img
+            src={homeHeadphones}
+            alt="home headphones"
+            className="w-[80px] h-[104px] absolute -top-11"
+          />
+          <p className="mt-[88px] text-[#000] text-[15px] font-bold">
+            HEADPHONES
+          </p>
+          <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
+            <p className="text-black/30 text-[13px] font-bold">SHOP</p>
+            <img src={arrowRight} alt="arrow right" />
+          </div>
         </div>
-      </div>
-      <div
-        onClick={handleSeeSpeakers}
-        className="speakers-box w-[327px] rounded-[8px] bg-shopitems flex flex-col items-center relative mt-[68px]"
-      >
-        <img
-          src={homeSpeaker}
-          alt="home speakers"
-          className="w-[80px] h-[104px] absolute -top-11"
-        />
-        <p className="mt-[88px] text-[#000] text-[15px] font-bold">SPEAKERS</p>
-        <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
-          <p className="text-black/30 text-[13px] font-bold">SHOP</p>
-          <img src={arrowRight} alt="arrow right" />
+        <div
+          onClick={handleSeeSpeakers}
+          className="speakers-box w-[327px] tb:mt-0 rounded-[8px] tb:w-[223px] bg-shopitems flex flex-col items-center relative mt-[68px]"
+        >
+          <img
+            src={homeSpeaker}
+            alt="home speakers"
+            className="w-[80px] h-[104px] absolute -top-11"
+          />
+          <p className="mt-[88px] text-[#000] text-[15px] font-bold">
+            SPEAKERS
+          </p>
+          <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
+            <p className="text-black/30 text-[13px] font-bold">SHOP</p>
+            <img src={arrowRight} alt="arrow right" />
+          </div>
         </div>
-      </div>
-      <div
-        onClick={handleSeeEarphones}
-        className="earphones-box w-[327px] rounded-[8px] bg-shopitems flex flex-col items-center relative mt-[68px]"
-      >
-        <img
-          src={homeEarphones}
-          alt="home headphones"
-          className="w-[147px] h-[133px] absolute -top-11"
-        />
-        <p className="mt-[88px] text-[#000] text-[15px] font-bold">EARPHONES</p>
-        <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
-          <p className="text-black/30 text-[13px] font-bold">SHOP</p>
-          <img src={arrowRight} alt="arrow right" />
+        <div
+          onClick={handleSeeEarphones}
+          className="earphones-box w-[327px] tb:mt-0 tb:w-[223px] rounded-[8px] bg-shopitems flex flex-col items-center relative mt-[68px]"
+        >
+          <img
+            src={homeEarphones}
+            alt="home headphones"
+            className="w-[147px] h-[133px] absolute -top-11"
+          />
+          <p className="mt-[88px] text-[#000] text-[15px] font-bold">
+            EARPHONES
+          </p>
+          <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
+            <p className="text-black/30 text-[13px] font-bold">SHOP</p>
+            <img src={arrowRight} alt="arrow right" />
+          </div>
         </div>
       </div>
 
-      <div className="best-product mt-[120px] w-[327px] text-center">
-        <div className="photo w-[327px] h-[300px] rounded-[8px]"></div>
-        <div className="title">
-          <h3 className="mt-[40px] text-[28px] uppercase text-black font-bold">
+      <div className="best-product mt-[120px] w-[327px] text-center tb:mt-[96px] tb:w-[689px]">
+        <div className="photo w-[327px] h-[300px] rounded-[8px]  tb:w-[689px] tb:h-[300px]"></div>
+        <div className="title tb:text-center tb:flex tb:items-center tb:flex-col">
+          <h3 className="mt-[40px] text-[28px] uppercase text-black font-bold tb:mt-[63px] tb:text-[40px] tb:w-[573px]">
             Bringing you the <span className="text-[#D87D4A]">best</span> audio
             gear
           </h3>
-          <p className="mt-[32px] text-[15px] font-normal text-black/50 w-[310px]">
+          <p className="mt-[32px] text-[15px] font-normal text-black/50 w-[310px] tb:w-[573px]">
             Located at the heart of New York City, Audiophile is the premier
             store for high end headphones, earphones, speakers, and audio
             accessories. We have a large showroom and luxury demonstration rooms
@@ -242,28 +250,30 @@ export default function Products() {
           </p>
         </div>
       </div>
-      <footer className="w-full bg-footer mt-[120px] flex flex-col items-center">
+      <footer className="w-full bg-footer mt-[120px] flex flex-col items-center tb:items-start tb:px-[40px]">
         <div className="rectangle w-[101px] h-[4px] bg-speaker"></div>
         <div className="logo mt-[48px]">
           <img src={logo} alt="logo icon" />
         </div>
-        <ul className="mt-[48px] flex flex-col items-center gap-[16px] text-[13px] text-white font-bold leading-[25px]">
+        <ul className="mt-[48px] flex flex-col items-center tb:flex-row tb:gap-[34px] gap-[16px] text-[13px] text-white font-bold leading-[25px]">
           <li onClick={handleGoHome}>HOME</li>
           <li onClick={handleSeeHeadphones}>HEADPHONES</li>
           <li onClick={handleSeeSpeakers}>SPEAKERS</li>
           <li onClick={handleSeeEarphones}>EARPHONES</li>
         </ul>
-        <p className="w-[327px] mt-[48px] text-center text-white font-bold text-[15px]">
+        <p className="w-[327px] mt-[48px] text-center text-white font-bold text-[15px] tb:text-left tb:w-[696px]">
           Audiophile is an all in one stop to fulfill your audio needs. We're a
           small team of music lovers and sound specialists who are devoted to
           helping you get the most out of personal audio. Come and visit our
           demo facility - we’re open 7 days a week.
         </p>
-        <p className="mt-[48px] text-[15px] text-white font-bold">
-          Copyright 2021. All Rights Reserved
-        </p>
-        <div className="socials mt-[48px] mb-[38px]">
-          <img src={socials} alt="socials" />
+        <div className="socials tb:flex tb:flex-row tb:w-[689px] tb:justify-between tb:items-center tb:mt-[80px]">
+          <p className="mt-[48px] text-[15px] text-white font-bold tb:mt-0">
+            Copyright 2021. All Rights Reserved
+          </p>
+          <div className="socials mt-[48px] mb-[38px] tb:mt-0">
+            <img src={socials} alt="socials" />
+          </div>
         </div>
       </footer>
     </div>

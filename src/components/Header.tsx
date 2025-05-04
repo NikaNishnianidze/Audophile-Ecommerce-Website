@@ -35,12 +35,14 @@ export default function Header() {
 
   return (
     <div className="flex flex-col items-center">
-      <header className="w-[375px] flex items-center justify-between py-[32px] px-[24px] border-b-[1px] border-white bg-header">
-        <div className="hamburger">
-          <img onClick={handleMenu} src={hamburger} alt="hamburger icon" />
-        </div>
-        <div className="logo">
-          <img src={logo} alt="logo icon" onClick={handleHome} />
+      <header className="w-[375px] tb:w-full flex items-center justify-between py-[32px] px-[24px] border-b-[1px] border-white bg-header tb:bg-tabletheader">
+        <div className="div mb:flex mb:gap-[76px] mb:items-center mb:justify-between tb:flex tb:flex-row tb:gap-[42px] tb:items-center">
+          <div className="hamburger">
+            <img onClick={handleMenu} src={hamburger} alt="hamburger icon" />
+          </div>
+          <div className="logo">
+            <img src={logo} alt="logo icon" onClick={handleHome} />
+          </div>
         </div>
         <div className="cart" onClick={() => setCartOpen(true)}>
           <img src={cartlogo} alt="cart icon" />
@@ -52,7 +54,7 @@ export default function Header() {
             onClick={() => setCartOpen(false)}
             className="fixed w-full left-1/2 transform -translate-x-1/2 inset-0 top-0 bg-black/50 z-30"
           ></div>
-          <div className="absolute top-[90px] left-1/2 transform rounded-[8px] mt-[24px] py-[32px] px-[20px] -translate-x-1/2 left-0 w-[327px] bg-white z-40 p-6">
+          <div className="absolute top-[90px] left-1/2 tb:left-[500px] tb:w-[337px] transform rounded-[8px] mt-[24px] py-[32px] px-[20px] -translate-x-1/2 left-0 w-[327px] bg-white z-40 p-6">
             <div className="first-line flex items-center justify-between">
               <p className="text-black text-[18px] font-bold tracking-[1.286px]">
                 cart ({cart.length})

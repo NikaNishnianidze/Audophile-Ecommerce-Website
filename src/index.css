@@ -3,12 +3,17 @@
 
 @theme {
   --color-header: #000;
+  --color-tabletheader: #191919;
   --color-product: #d87d4a;
   --color-shopitems: #f1f1f1;
   --color-speaker: #d87d4a;
   --color-zx7: #f1f1f1;
   --color-footer: #101010;
   --color-bordercolor: #cfcfcf;
+
+  --breakpoint-mb: 375px;
+  --breakpoint-tb: 768px;
+  --breakpoint-dk: 1440px;
 }
 
 body {
@@ -85,4 +90,24 @@ label {
   gap: 10px;
   align-items: center;
   user-select: none;
+}
+
+@media screen and (min-width: 768px) {
+  .zx7 {
+    background: url(/public/assets/home/tablet/image-speaker-zx7.jpg) lightgray
+      0px 0px / 100% 100% no-repeat;
+  }
+  .new-product {
+    background-image: url(/public/assets/home/tablet/image-header.jpg);
+    background-size: 768px 760px;
+  }
+  .earphones-photo {
+    background: url(/public/assets/home/tablet/image-earphones-yx1.jpg)
+      lightgray 0px 0px / 100% 100% no-repeat;
+  }
+
+  .photo {
+    background: url(/public/assets/shared/tablet/image-best-gear.jpg) lightgray
+      0px 0px / 100% 100% no-repeat;
+  }
 }

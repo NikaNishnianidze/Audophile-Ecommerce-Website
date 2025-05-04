@@ -45,64 +45,66 @@ export default function Home() {
         <>
           <div
             onClick={() => setMenu(false)}
-            className="fixed w-[375px] left-1/2 transform -translate-x-1/2 inset-0 top-0 bg-black/50 z-30"
+            className="fixed w-[375px] left-1/2 tb:w-full transform -translate-x-1/2 inset-0 top-0 bg-black/50 z-30"
           ></div>
-          <div className="absolute top-[90px] left-1/2 transform -translate-x-1/2 left-0 w-[375px] bg-white z-40 p-6">
-            <div
-              onClick={handleSeeHeadphones}
-              className="headphones-box flex flex-col items-center w-[327px]  rounded-[8px] bg-shopitems mt-[75px] relative"
-            >
-              <img
-                src={homeHeadphones}
-                alt="home headphones"
-                className="w-[80px] h-[104px] absolute -top-11"
-              />
-              <p className="mt-[88px] text-[#000] text-[15px] font-bold">
-                HEADPHONES
-              </p>
-              <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
-                <p className="text-black/30 text-[13px] font-bold">SHOP</p>
-                <img src={arrowRight} alt="arrow right" />
+          <div className="absolute top-[90px] tb:w-full left-1/2 transform -translate-x-1/2 left-0 w-[375px] bg-white z-40 p-6">
+            <div className="aligment tb:flex tb:flex-row tb:mt-[56px] tb:gap-[10px] tb:justify-center">
+              <div
+                onClick={handleSeeHeadphones}
+                className="headphones-box flex flex-col items-center tb:w-[223px] w-[327px] tb:mt-0  rounded-[8px] bg-shopitems mt-[75px] relative"
+              >
+                <img
+                  src={homeHeadphones}
+                  alt="home headphones"
+                  className="w-[80px] h-[104px] absolute -top-11"
+                />
+                <p className="mt-[88px] text-[#000] text-[15px] font-bold">
+                  HEADPHONES
+                </p>
+                <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
+                  <p className="text-black/30 text-[13px] font-bold">SHOP</p>
+                  <img src={arrowRight} alt="arrow right" />
+                </div>
               </div>
-            </div>
-            <div
-              onClick={handleSeeSpeakers}
-              className="speakers-box w-[327px] rounded-[8px] bg-shopitems flex flex-col items-center relative mt-[68px]"
-            >
-              <img
-                src={homeSpeaker}
-                alt="home speakers"
-                className="w-[80px] h-[104px] absolute -top-11"
-              />
-              <p className="mt-[88px] text-[#000] text-[15px] font-bold">
-                SPEAKERS
-              </p>
-              <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
-                <p className="text-black/30 text-[13px] font-bold">SHOP</p>
-                <img src={arrowRight} alt="arrow right" />
+              <div
+                onClick={handleSeeSpeakers}
+                className="speakers-box w-[327px] rounded-[8px]  tb:w-[223px] bg-shopitems tb:mt-0 flex flex-col items-center relative mt-[68px]"
+              >
+                <img
+                  src={homeSpeaker}
+                  alt="home speakers"
+                  className="w-[80px] h-[104px] absolute -top-11 tb:w-[84px] tb:h-[101px]"
+                />
+                <p className="mt-[88px] text-[#000] text-[15px] font-bold">
+                  SPEAKERS
+                </p>
+                <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
+                  <p className="text-black/30 text-[13px] font-bold">SHOP</p>
+                  <img src={arrowRight} alt="arrow right" />
+                </div>
               </div>
-            </div>
-            <div
-              onClick={handleSeeEarphones}
-              className="earphones-box w-[327px] rounded-[8px] bg-shopitems flex flex-col items-center relative mt-[68px]"
-            >
-              <img
-                src={homeEarphones}
-                alt="home headphones"
-                className="w-[147px] h-[133px] absolute -top-11"
-              />
-              <p className="mt-[88px] text-[#000] text-[15px] font-bold">
-                EARPHONES
-              </p>
-              <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
-                <p className="text-black/30 text-[13px] font-bold">SHOP</p>
-                <img src={arrowRight} alt="arrow right" />
+              <div
+                onClick={handleSeeEarphones}
+                className="earphones-box w-[327px] rounded-[8px] tb:w-[223px] tb:mt-0 bg-shopitems flex flex-col items-center relative mt-[68px]"
+              >
+                <img
+                  src={homeEarphones}
+                  alt="home headphones"
+                  className="w-[147px] h-[133px] absolute -top-11"
+                />
+                <p className="mt-[88px] text-[#000] text-[15px] font-bold">
+                  EARPHONES
+                </p>
+                <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
+                  <p className="text-black/30 text-[13px] font-bold">SHOP</p>
+                  <img src={arrowRight} alt="arrow right" />
+                </div>
               </div>
             </div>
           </div>
         </>
       )}
-      <div className="new-product w-[375px] flex flex-col items-center">
+      <div className="new-product w-[375px] flex flex-col items-center tb:w-full">
         <p className="mt-[108px] leading-[10px] text-[14px] text-[#fff] font-normal">
           NEW PRODUCT
         </p>
@@ -120,60 +122,66 @@ export default function Home() {
           See Product
         </button>
       </div>
-      <div
-        onClick={handleSeeHeadphones}
-        className="headphones-box flex flex-col items-center w-[327px]  rounded-[8px] bg-shopitems mt-[75px] relative"
-      >
-        <img
-          src={homeHeadphones}
-          alt="home headphones"
-          className="w-[80px] h-[104px] absolute -top-11"
-        />
-        <p className="mt-[88px] text-[#000] text-[15px] font-bold">
-          HEADPHONES
-        </p>
-        <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
-          <p className="text-black/30 text-[13px] font-bold">SHOP</p>
-          <img src={arrowRight} alt="arrow right" />
+      <div className="product tb:flex tb:flex-wrap tb:items-center tb:mt-[160px] tb:gap-[10px] tb:px-[35px]">
+        <div
+          onClick={handleSeeHeadphones}
+          className="headphones-box flex flex-col tb:mt-0 tb:w-[223px] items-center w-[327px]  rounded-[8px] bg-shopitems mt-[75px] relative"
+        >
+          <img
+            src={homeHeadphones}
+            alt="home headphones"
+            className="w-[80px] h-[104px] absolute -top-11 tb:w-[79px]"
+          />
+          <p className="mt-[88px] text-[#000] text-[15px] font-bold">
+            HEADPHONES
+          </p>
+          <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
+            <p className="text-black/30 text-[13px] font-bold">SHOP</p>
+            <img src={arrowRight} alt="arrow right" />
+          </div>
+        </div>
+        <div
+          onClick={handleSeeSpeakers}
+          className="speakers-box w-[327px] tb:mt-0 tb:w-[223px] rounded-[8px] bg-shopitems flex flex-col items-center relative mt-[68px]"
+        >
+          <img
+            src={homeSpeaker}
+            alt="home speakers"
+            className="w-[80px] h-[104px] absolute -top-11 tb:w-[79px]"
+          />
+          <p className="mt-[88px] text-[#000] text-[15px] font-bold">
+            SPEAKERS
+          </p>
+          <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
+            <p className="text-black/30 text-[13px] font-bold">SHOP</p>
+            <img src={arrowRight} alt="arrow right" />
+          </div>
+        </div>
+        <div
+          onClick={handleSeeEarphones}
+          className="earphones-box w-[327px] tb:mt-0 tb:w-[223px] rounded-[8px] bg-shopitems flex flex-col items-center relative mt-[68px]"
+        >
+          <img
+            src={homeEarphones}
+            alt="home headphones"
+            className="w-[147px] h-[133px] absolute -top-16"
+          />
+          <p className="mt-[88px] text-[#000] text-[15px] font-bold">
+            EARPHONES
+          </p>
+          <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
+            <p className="text-black/30 text-[13px] font-bold">SHOP</p>
+            <img src={arrowRight} alt="arrow right" />
+          </div>
         </div>
       </div>
-      <div
-        onClick={handleSeeSpeakers}
-        className="speakers-box w-[327px] rounded-[8px] bg-shopitems flex flex-col items-center relative mt-[68px]"
-      >
-        <img
-          src={homeSpeaker}
-          alt="home speakers"
-          className="w-[80px] h-[104px] absolute -top-11"
-        />
-        <p className="mt-[88px] text-[#000] text-[15px] font-bold">SPEAKERS</p>
-        <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
-          <p className="text-black/30 text-[13px] font-bold">SHOP</p>
-          <img src={arrowRight} alt="arrow right" />
-        </div>
-      </div>
-      <div
-        onClick={handleSeeEarphones}
-        className="earphones-box w-[327px] rounded-[8px] bg-shopitems flex flex-col items-center relative mt-[68px]"
-      >
-        <img
-          src={homeEarphones}
-          alt="home headphones"
-          className="w-[147px] h-[133px] absolute -top-11"
-        />
-        <p className="mt-[88px] text-[#000] text-[15px] font-bold">EARPHONES</p>
-        <div className="shop mt-[17px] mb-[22px] flex items-center gap-[13px]">
-          <p className="text-black/30 text-[13px] font-bold">SHOP</p>
-          <img src={arrowRight} alt="arrow right" />
-        </div>
-      </div>
-      <div className="speaker mt-[120px] w-[327px] bg-speaker rounded-[8px] flex flex-col items-center">
+      <div className="speaker mt-[120px] w-[327px] tb:mt-[96px] tb:w-[689px] tb:pb-[64px] bg-speaker rounded-[8px] flex flex-col items-center">
         <img
           src={homeSpeaker}
           alt="home speaker"
-          className="mt-[55px] w-[172.248px] h-[207px]"
+          className="mt-[55px] w-[172.248px] h-[207px] tb:w-[197px] tb:h-[237px] "
         />
-        <h2 className="text-[36px] font-bold text-white w-[200px] text-center mt-[32px] leading-[40px]">
+        <h2 className="text-[36px] font-bold text-white w-[200px] text-center mt-[32px] tb:mt-[64px] tb:text-[56px] tb:w-[261px] tb:leading-[59px] leading-[40px]">
           ZX9 SPEAKER
         </h2>
         <p className="mt-[24px] text-[15px] font-normal text-white/50 leading-[25px] text-center w-[280px]">
@@ -182,12 +190,12 @@ export default function Home() {
         </p>
         <button
           onClick={handleSeeZx9}
-          className="mt-[24px] w-[160px] py-[15px] bg-black text-white text-[13px] font-bold mb-[55px]"
+          className="mt-[24px] w-[160px] tb:mt-[40px] py-[15px] bg-black text-white text-[13px] font-bold mb-[55px]"
         >
           SEE PRODUCT
         </button>
       </div>
-      <div className="zx7 w-[327px] h-[315px] mt-[30px] bg-zx7 py-[101px] pl-[25px] rounded-[8px]">
+      <div className="zx7 w-[327px] tb:w-[689px] tb:h-[320px] h-[315px] mt-[30px] tb:mt-[32px] bg-zx7 py-[101px] pl-[25px] rounded-[8px]">
         <h3 className="text-[28px] text-black font-bold">ZX7 SPEAKER</h3>
         <button
           onClick={handleSeeZx7}
@@ -196,9 +204,9 @@ export default function Home() {
           SEE PRODUCT
         </button>
       </div>
-      <div className="EARPHONES flex flex-col gap-[30px] mt-[30px]">
-        <div className="earphones-photo w-[327px] h-[200px] rounded-[8px]"></div>
-        <div className="product w-[327px] py-[41px] rounded-[8px] bg-zx7 pl-[24px]">
+      <div className="EARPHONES flex flex-col gap-[30px] mt-[30px] tb:flex-row tb:gap-[10px]">
+        <div className="earphones-photo w-[327px] h-[200px] tb:w-[339px] tb:h-[320px] rounded-[8px]"></div>
+        <div className="product w-[327px] py-[41px] rounded-[8px] bg-zx7 pl-[24px] tb:w-[339px] tb:h-[320px] tb:py-[101px] tb:pl-[42px]">
           <h3 className="text-[28px] text-black font-bold">YX1 EARPHONES</h3>
           <button
             onClick={handleSeeYx1}
@@ -208,14 +216,14 @@ export default function Home() {
           </button>
         </div>
       </div>
-      <div className="best-product mt-[120px] w-[327px] text-center">
-        <div className="photo w-[327px] h-[300px] rounded-[8px]"></div>
-        <div className="title">
-          <h3 className="mt-[40px] text-[28px] uppercase text-black font-bold">
+      <div className="best-product mt-[120px] w-[327px] text-center tb:mt-[96px] tb:w-[689px]">
+        <div className="photo w-[327px] h-[300px] rounded-[8px]  tb:w-[689px] tb:h-[300px]"></div>
+        <div className="title tb:text-center tb:flex tb:items-center tb:flex-col">
+          <h3 className="mt-[40px] text-[28px] uppercase text-black font-bold tb:mt-[63px] tb:text-[40px] tb:w-[573px]">
             Bringing you the <span className="text-[#D87D4A]">best</span> audio
             gear
           </h3>
-          <p className="mt-[32px] text-[15px] font-normal text-black/50 w-[310px]">
+          <p className="mt-[32px] text-[15px] font-normal text-black/50 w-[310px] tb:w-[573px]">
             Located at the heart of New York City, Audiophile is the premier
             store for high end headphones, earphones, speakers, and audio
             accessories. We have a large showroom and luxury demonstration rooms
@@ -225,28 +233,30 @@ export default function Home() {
           </p>
         </div>
       </div>
-      <footer className="w-full bg-footer mt-[120px] flex flex-col items-center">
+      <footer className="w-full bg-footer mt-[120px] flex flex-col items-center tb:items-start tb:px-[40px] tb:w-full">
         <div className="rectangle w-[101px] h-[4px] bg-speaker"></div>
         <div className="logo mt-[48px]">
           <img src={logo} alt="logo icon" />
         </div>
-        <ul className="mt-[48px] flex flex-col items-center gap-[16px] text-[13px] text-white font-bold leading-[25px]">
+        <ul className="mt-[48px] flex flex-col items-center tb:flex-row tb:gap-[34px] gap-[16px] text-[13px] text-white font-bold leading-[25px]">
           <li onClick={handleGoHome}>HOME</li>
           <li onClick={handleSeeHeadphones}>HEADPHONES</li>
           <li onClick={handleSeeSpeakers}>SPEAKERS</li>
           <li onClick={handleSeeEarphones}>EARPHONES</li>
         </ul>
-        <p className="w-[327px] mt-[48px] text-center text-white font-bold text-[15px]">
+        <p className="w-[327px] mt-[48px] text-center text-white font-bold text-[15px] tb:text-left tb:w-[696px]">
           Audiophile is an all in one stop to fulfill your audio needs. We're a
           small team of music lovers and sound specialists who are devoted to
           helping you get the most out of personal audio. Come and visit our
           demo facility - we’re open 7 days a week.
         </p>
-        <p className="mt-[48px] text-[15px] text-white font-bold">
-          Copyright 2021. All Rights Reserved
-        </p>
-        <div className="socials mt-[48px] mb-[38px]">
-          <img src={socials} alt="socials" />
+        <div className="socials tb:flex tb:flex-row tb:w-[689px] tb:justify-between tb:items-center tb:mt-[80px]">
+          <p className="mt-[48px] text-[15px] text-white font-bold tb:mt-0">
+            Copyright 2021. All Rights Reserved
+          </p>
+          <div className="socials mt-[48px] mb-[38px] tb:mt-0">
+            <img src={socials} alt="socials" />
+          </div>
         </div>
       </footer>
     </div>
