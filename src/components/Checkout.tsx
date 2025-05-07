@@ -585,7 +585,7 @@ export default function Checkout() {
             <div className="button flex justify-center">
               <button
                 onClick={handleGoHome}
-                className="uppercase text-white font-bold text-[13px] tb:w-[444px] text-center w-[263px] py-[15px] bg-product mt-[23px]"
+                className="uppercase cursor-pointer hover:bg-button text-white font-bold text-[13px] tb:w-[444px] text-center w-[263px] py-[15px] bg-product mt-[23px]"
               >
                 back to home
               </button>
