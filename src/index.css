@@ -10,6 +10,9 @@
   --color-zx7: #f1f1f1;
   --color-footer: #101010;
   --color-bordercolor: #cfcfcf;
+  --color-newproduct: #0e0e0e;
+  --color-button: #fbaf85;
+  --color-graybutton: #4c4c4c;
 
   --breakpoint-mb: 375px;
   --breakpoint-tb: 768px;
@@ -20,13 +23,6 @@ body {
   font-family: "Manrope", sans-serif;
   min-height: 100vh;
   background-color: #fafafa;
-}
-
-.new-product {
-  background-image: url(/public/assets/home/mobile/image-header.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 377px 522px;
 }
 
 .zx7 {
@@ -97,10 +93,7 @@ label {
     background: url(/public/assets/home/tablet/image-speaker-zx7.jpg) lightgray
       0px 0px / 100% 100% no-repeat;
   }
-  .new-product {
-    background-image: url(/public/assets/home/tablet/image-header.jpg);
-    background-size: 768px 760px;
-  }
+
   .earphones-photo {
     background: url(/public/assets/home/tablet/image-earphones-yx1.jpg)
       lightgray 0px 0px / 100% 100% no-repeat;
@@ -108,6 +101,21 @@ label {
 
   .photo {
     background: url(/public/assets/shared/tablet/image-best-gear.jpg) lightgray
+      0px 0px / 100% 100% no-repeat;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .zx7 {
+    background: url(/public/assets/home/desktop/image-speaker-zx7.jpg) lightgray
+      0px 0px / 100% 100% no-repeat;
+  }
+  .earphones-photo {
+    background: url(/public/assets/home/desktop/image-earphones-yx1.jpg)
+      lightgray 0px 0px / 100% 100% no-repeat;
+  }
+  .photo {
+    background: url(/public/assets/shared/desktop/image-best-gear.jpg) lightgray
       0px 0px / 100% 100% no-repeat;
   }
 }

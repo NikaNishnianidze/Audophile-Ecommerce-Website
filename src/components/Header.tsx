@@ -32,16 +32,36 @@ export default function Header() {
       return;
     }
   };
+  const handleSeeHeadphones = () => {
+    navigate("/headphones");
+    window.scrollTo(0, 0);
+  };
+  const handleSeeSpeakers = () => {
+    navigate("/speakers");
+    window.scrollTo(0, 0);
+  };
+  const handleSeeEarphones = () => {
+    navigate("/earphones");
+    window.scrollTo(0, 0);
+  };
 
   return (
     <div className="flex flex-col items-center">
-      <header className="w-[375px] tb:w-full flex items-center justify-between py-[32px] px-[24px] border-b-[1px] border-white bg-header tb:bg-tabletheader">
-        <div className="div mb:flex mb:gap-[76px] mb:items-center mb:justify-between tb:flex tb:flex-row tb:gap-[42px] tb:items-center">
-          <div className="hamburger">
+      <header className="w-full tb:w-full flex items-center justify-between py-[32px] px-[24px] dk:px-[165px] border-b-[1px] border-white bg-header tb:bg-tabletheader">
+        <div className="div mb:flex mb:gap-[76px] dk:w-[770px] mb:items-center mb:justify-between dk:gap-0 dk:justify-between tb:flex tb:flex-row tb:gap-[42px] tb:items-center">
+          <div className="hamburger dk:hidden mb:block tb:block">
             <img onClick={handleMenu} src={hamburger} alt="hamburger icon" />
           </div>
           <div className="logo">
             <img src={logo} alt="logo icon" onClick={handleHome} />
+          </div>
+          <div className="menu-list mb:hidden dk:block">
+            <ul className="flex items-center gap-[34px] text-white text-[13px] tracking-[2px] font-bold uppercase">
+              <li onClick={handleHome}>home</li>
+              <li onClick={handleSeeHeadphones}>headphones</li>
+              <li onClick={handleSeeSpeakers}>speakers</li>
+              <li onClick={handleSeeEarphones}>earphones</li>
+            </ul>
           </div>
         </div>
         <div className="cart" onClick={() => setCartOpen(true)}>
@@ -54,14 +74,14 @@ export default function Header() {
             onClick={() => setCartOpen(false)}
             className="fixed w-full left-1/2 transform -translate-x-1/2 inset-0 top-0 bg-black/50 z-30"
           ></div>
-          <div className="absolute top-[90px] left-1/2 tb:left-[500px] tb:w-[337px] transform rounded-[8px] mt-[24px] py-[32px] px-[20px] -translate-x-1/2 left-0 w-[327px] bg-white z-40 p-6">
+          <div className="absolute top-[90px] left-1/2 tb:left-[500px] dk:left-[1050px] tb:w-[337px] dk:w-[377px] transform rounded-[8px] mt-[24px] py-[32px] px-[20px] -translate-x-1/2 left-0 w-[327px] bg-white z-40 p-6">
             <div className="first-line flex items-center justify-between">
               <p className="text-black text-[18px] font-bold tracking-[1.286px]">
                 cart ({cart.length})
               </p>
               <p
                 onClick={handleRemoveAll}
-                className="text-black/50 text-[15px] font-normal underline"
+                className="text-black/50 text-[15px] font-normal cursor-pointer underline hover:text-[#D87D4A] "
               >
                 Remove all
               </p>
@@ -103,7 +123,7 @@ export default function Header() {
                               );
                             }
                           }}
-                          className="text-black/25 text-[13px] font-bold"
+                          className="text-black/25 text-[13px] font-bold cursor-pointer"
                         >
                           -
                         </p>
@@ -126,7 +146,7 @@ export default function Header() {
                               JSON.stringify(updatedCart)
                             );
                           }}
-                          className="text-black/25 text-[13px] font-bold"
+                          className="text-black/25 text-[13px] font-bold cursor-pointer"
                         >
                           +
                         </p>
@@ -147,7 +167,7 @@ export default function Header() {
             <div className="button flex flex-col items-center">
               <button
                 onClick={handleCheckout}
-                className="mt-[24px] uppercase text-center text-white font-bold text-[13px] w-[271px] py-[15px] bg-product"
+                className="mt-[24px] uppercase hover:bg-button cursor-pointer text-center text-white font-bold text-[13px] w-[271px] py-[15px] bg-product"
               >
                 checkout
               </button>
